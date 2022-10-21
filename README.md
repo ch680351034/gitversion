@@ -10,3 +10,4 @@ Major version upgrade1
 fea-videocall 
 fea-videocall-1
 fea-videocall-2
+minor-change
