@@ -30,7 +30,9 @@ parameters {
 
                 checkout([
                     $class: 'GitSCM', 
+
                     branches: [[name: '*/develop']], 
+
                     userRemoteConfigs: [[url: 'https://github.com/ch680351034/gitversion.git']]
                 ])
 
