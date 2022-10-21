@@ -9,8 +9,8 @@ parameters {
 
     options {
         buildDiscarder logRotator( 
-                    daysToKeepStr: '16', 
-                    numToKeepStr: '10'
+                    daysToKeepStr: '7', 
+                    numToKeepStr: '5'
             )
     }
 
