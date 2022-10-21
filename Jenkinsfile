@@ -30,7 +30,7 @@ parameters {
 
                 checkout([
                     $class: 'GitSCM', 
-                    branches: [[name: '*/fea-videocall']], 
+                    branches: [[name: 'fea-videocall']], 
                     userRemoteConfigs: [[url: 'https://github.com/ch680351034/gitversion.git']]
                 ])
 
