@@ -2,7 +2,7 @@ pipeline {
 
     agent any 
 parameters {
-  gitParameter branch: '', branchFilter: '.*', defaultValue: 'origin/master', name: 'BRANCH', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'GitParameterDefinition', useRepository: 'https://github.com/ch680351034/multibranch-pipeline-demo.git'
+  gitParameter branch: '', branchFilter: '.*', defaultValue: 'origin/master', name: 'BRANCH', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'GitParameterDefinition', useRepository: 'https://github.com/ch680351034/gitversion.git'
 }
 
     
@@ -28,7 +28,7 @@ parameters {
         stage('Code Checkout') {
             steps {
                 
-              checkout([$class: 'GitSCM', branches: [[name: '${BRANCH}']], extensions: [[$class: 'WipeWorkspace'], [$class: 'GitLFSPull']], userRemoteConfigs: [[url: 'https://github.com/ch680351034/multibranch-pipeline-demo.git']]])
+              checkout([$class: 'GitSCM', branches: [[name: '${BRANCH}']], extensions: [[$class: 'WipeWorkspace'], [$class: 'GitLFSPull']], userRemoteConfigs: [[url: 'https://github.com/ch680351034/gitversion.git']]])
                //sh 'version=$(gitversion | jq -r '.MajorMinorPatch')'
                 sh 'gitversion > version.json'
                 sh 'cat version.json'
