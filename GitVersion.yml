@@ -1,32 +1,33 @@
-mode: ContinuousDelivery
 assembly-informational-format: None
-next-version: 172.0
+mode: ContinuousDeployment
+next-version: 172.0.0
 branches:
   hotfix:
     mode: ContinuousDeployment
-    regex: "[origin/]*(hotfix)[/-]*"
-    increment: Patch
     tag: useBranchName
+    increment: Patch
+    regex: '[origin/]*(hotfix)[/-]*'
   feature:
     mode: ContinuousDeployment
-    regex: "[origin/]*(chore|bug|feature)[/-]*"
-    increment: Minor
     tag: useBranchName
+    increment: Minor
+    regex: '[origin/]*(chore|bug|feature)[/-]*'
   develop:
     mode: ContinuousDeployment
-    regex: origin/develop
-    increment: Minor
     tag: beta
+    increment: Minor
     prevent-increment-of-merged-branch-version: true
     track-merge-target: true
+    regex: origin/develop
     tracks-release-branches: true
     is-release-branch: false
     is-mainline: false
   master:
     mode: ContinuousDeployment
-    regex: "[origin/]*(main)[/-]*"
-    increment: Major
     tag: useBranchName
+    increment: Major
+    regex: '[origin/]*(master)[/-]*'
     source-branches: []
 ignore:
   sha: []
+merge-message-formats: {}
