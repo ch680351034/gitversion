@@ -26,6 +26,10 @@ pipeline {
         }
 
         stage('Code Checkout') {
+            
+            options {
+                 timeout(5)
+            }
             steps {
 
                git branch: "${params.BRANCH}", url: 'https://github.com/ch680351034/gitversion.git'
