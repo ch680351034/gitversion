@@ -1,9 +1,9 @@
 pipeline {
 
     agent any 
-parameters {
-  gitParameter branch: '', branchFilter: '.*', defaultValue: 'origin/master', name: 'BRANCH', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'GitParameterDefinition', useRepository: 'https://github.com/ch680351034/gitversion.git'
-}
+      parameters {
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+      }
 
     
 
@@ -28,14 +28,14 @@ parameters {
         stage('Code Checkout') {
             steps {
 
-                checkout([
-                    $class: 'GitSCM', 
+//                 checkout([
+//                     $class: 'GitSCM', 
 
-                    branches: [[name: '*/develop']], 
+//                     branches: [[name: '*/develop']], 
 
-                    userRemoteConfigs: [[url: 'https://github.com/ch680351034/gitversion.git']]
-                ])
-
+//                     userRemoteConfigs: [[url: 'https://github.com/ch680351034/gitversion.git']]
+//                 ])
+               git branch: "${params.BRANCH}", url: 'https://github.com/ch680351034/gitversion.git'
                //sh 'version=$(gitversion | jq -r '.MajorMinorPatch')'
                 sh 'gitversion > version.json'
                 sh 'cat version.json'
