@@ -28,7 +28,7 @@ pipeline {
         stage('Code Checkout') {
             
             options {
-                 timeout(5)
+                 timeout(10)
             }
             steps {
 
