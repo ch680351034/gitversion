@@ -15,15 +15,6 @@ pipeline {
     }
 
     stages {
-        
-        stage('Cleanup Workspace') {
-            steps {
-//                 cleanWs()
-                sh """
-                echo "Cleaned Up Workspace For Project"
-                """
-            }
-        }
 
         stage('Code Checkout') {
             
@@ -74,6 +65,15 @@ pipeline {
 
                 sh """
                 echo "Deploying Code"
+                """
+            }
+        }
+        
+           stage('Cleanup Workspace') {
+                steps {
+                cleanWs()
+                sh """
+                echo "Cleaned Up Workspace For Project"
                 """
             }
         }
