@@ -2,7 +2,7 @@ pipeline {
 
     agent any 
       parameters {
-        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+        gitParameter defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
       }
 
     
@@ -15,24 +15,17 @@ pipeline {
     }
 
     stages {
-        
-        stage('Cleanup Workspace') {
-            steps {
-                cleanWs()
-                sh """
-                echo "Cleaned Up Workspace For Project"
-                """
-            }
-        }
 
-        stage('Code Checkout') {
+        stage('build_version_naming') {
             
             options {
-                 timeout(5)
+                 timeout(10)
             }
             steps {
+               echo"pulling changes from the branch ${params.BRANCH}"
 
-               git branch: "${params.BRANCH}", url: 'https://github.com/ch680351034/gitversion.git'
+               //git branch: "${params.BRANCH}", url: 'https://github.com/ch680351034/gitversion.git'
+
                //sh 'version=$(gitversion | jq -r '.MajorMinorPatch')'
                 sh 'gitversion > version.json'
                 sh 'cat version.json'
@@ -74,6 +67,15 @@ pipeline {
 
                 sh """
                 echo "Deploying Code"
+                """
+            }
+        }
+        
+           stage('Cleanup Workspace') {
+                steps {
+                cleanWs()
+                sh """
+                echo "Cleaned Up Workspace For Project"
                 """
             }
         }
