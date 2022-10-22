@@ -14,7 +14,7 @@ branches:
     tag: useBranchName
   develop:
     mode: ContinuousDeployment
-    regex: develop
+    regex: origin/develop
     increment: Minor
     tag: beta
     prevent-increment-of-merged-branch-version: false
