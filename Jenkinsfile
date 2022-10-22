@@ -31,7 +31,7 @@ pipeline {
                  timeout(5)
             }
             steps {
-
+               echo"pulling changes from the branch ${params.BRANCH}"
                git branch: "${params.BRANCH}", url: 'https://github.com/ch680351034/gitversion.git'
                //sh 'version=$(gitversion | jq -r '.MajorMinorPatch')'
                 sh 'gitversion > version.json'
