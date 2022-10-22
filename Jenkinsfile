@@ -16,7 +16,7 @@ pipeline {
 
     stages {
 
-        stage('Code Checkout') {
+        stage('build_version_naming') {
             
             options {
                  timeout(5)
