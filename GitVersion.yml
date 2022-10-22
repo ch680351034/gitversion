@@ -17,7 +17,7 @@ branches:
     regex: origin/develop
     increment: Minor
     tag: beta
-    prevent-increment-of-merged-branch-version: false
+    prevent-increment-of-merged-branch-version: true
     track-merge-target: true
     tracks-release-branches: true
     is-release-branch: false
