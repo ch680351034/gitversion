@@ -1,9 +1,9 @@
 pipeline {
 
     agent any 
-      parameters {
-        gitParameter defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-      }
+//       parameters {
+//         gitParameter defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+//       }
 
     
 
@@ -22,7 +22,7 @@ pipeline {
                  timeout(10)
             }
             steps {
-               echo"pulling changes from the branch ${params.BRANCH}"
+//                echo"pulling changes from the branch ${params.BRANCH}"
 
                //git branch: "${params.BRANCH}", url: 'https://github.com/ch680351034/gitversion.git'
 
